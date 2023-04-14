@@ -17,21 +17,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-use App\Http\Controllers\CarController;
-Route::controller(CarController::class)->group(function () {
+use App\Http\Controllers\CarController as PublicCarController;
+Route::controller(PublicCarController::class)->group(function () {
      Route::get('index', 'index');
      Route::get('company', 'company');
 });    
-Route::controller(CarController::class)->middleware('auth')->group(function () {   
+Route::controller(PublicCarController::class)->middleware('auth')->group(function () {   
     Route::get('yoyaku/add', 'add');
     Route::post('yoyaku/add', 'yoyakucreate')->name('yayakucreate');
 });    
 
+use App\Http\Controllers\Admin\CarController;
 Route::controller(CarController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {   
-    Route::get('car/create', 'add')->name('car.add');
-    Route::get('stock/create', 'create');
-    Route::post('stock/create', 'create')->name('stock.create');
+    Route::get('stock/create', 'add')->name('car.add');
+    Route::post('stock/create', 'stock')->name('stock.create');
+    // Route::get('stock/list', 'stocklist')->name('stocklist');
 });    
+
+use App\Http\Controllers\Admin\StockController;
+Route::controller(StockController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {   
+    // Route::get('stock/create', 'add')->name('car.add');
+    // Route::post('stock/create', 'stock')->name('stock.create');
+    Route::get('stock/list', 'stocklist')->name('stocklist');
+    Route::get('stock/delete', 'delete')->name('stock.delete');
+});    
+
+
 
 use App\Http\Controllers\Admin\UserController;
 Route::controller(UserController::class)->prefix('admin')->group(function() {

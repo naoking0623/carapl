@@ -4,26 +4,74 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Car;
 
 class CarController extends Controller
 {
       public function add()
     {
-        return view('admin.car.create');
-    }//
-    public function create(Request $request)
-    {
-        // admin/news/createにリダイレクトする
-        return redirect('admin/car/create');
+        return view('admin.stock.create');
     }
+    
+    //  public function stocklist()
+    // {
+    //     return view('admin.stock.list');
+    // }
+    
+    
+    // public function create(Request $request)
+    // {
+    //     // admin/news/createにリダイレクトする
+    //     return redirect('admin/car/create');
+    // }
 
-    public function edit()
+    // public function edit()
+    // {
+    //     return view('admin.uesr.edit');
+    // }
+
+    // public function update()
+    // {
+    //     return redirect('admin/user/edit');
+    // } 
+    
+    public function stock(Request $request)
     {
-        return view('admin.uesr.edit');
+        // 以下を追記
+        // Validationを行う
+        $this->validate($request, Car::$rules);
+
+        $car = new Car;
+        $form = $request->all();
+        // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $car->image_path = basename($path);
+        } else {
+            $car->image_path = null;
+        }
+
+        // フォームから送信されてきた_tokenを削除する
+        unset($form['_token']);
+        // フォームから送信されてきたimageを削除する
+        unset($form['image']);
+
+        // データベースに保存する
+        $car->fill($form);
+        $car->save();
+
+        return redirect('admin/stock/create');
     }
-
-    public function update()
+    // 追記0413
+     public function delete(Request $request)
     {
-        return redirect('admin/user/edit');
-    } //
+        // 該当するNews Modelを取得
+        $car = Car::find($request->id);
+
+    //     削除する
+    //     $car->delete();
+
+    // //     return redirect('admin/stock/create');
+    // }
+}
 }

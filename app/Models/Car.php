@@ -11,10 +11,10 @@ class Car extends Model
     protected $guarded = array('id');
 
     public static $rules = array(
-        'neme' => 'required',
+        'name' => 'required',
         'odometer' => 'required',
         'inspection' => 'required',
-        'image_path' => 'required',
+       
         );
         
 }

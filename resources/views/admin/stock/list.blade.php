@@ -18,14 +18,13 @@
                         　　<li>走行距離:{{$car->odometer}}km</li>
                             <li>車検:{{$car->inspection}}まで</li>
                         </ul>
-                        <!--<button type="button" class="btn btn-primary">この車の見学予約はこちらから</button>-->
-                        <a href="/yoyaku/add" class="btn btn--orange"><i class="fas fa-phone-alt fa-position-center"></i>この車の見学予約はこちら</a>
-                      </div>
                     </div>
                 </div>
+                <div>
+                <a href="{{ route('admin.stock.delete', ['id' => $car->id]) }}">削除</a>
                 <br>
+                </div>
                 @endforeach
-                
             </div>
        </div>
    </div>
