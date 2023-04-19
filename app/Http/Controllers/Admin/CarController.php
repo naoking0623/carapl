@@ -43,9 +43,10 @@ class CarController extends Controller
 
         $car = new Car;
         $form = $request->all();
+        
         // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
         if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
+            $path = $request->file('image')->store('public/img');
             $car->image_path = basename($path);
         } else {
             $car->image_path = null;

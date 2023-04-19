@@ -56,14 +56,13 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4 ">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('新規の方はこちらから') }}
-                                    </button>
-                                </div>
-                            </div>
                         </form>
+                        <br>
+                        <div class="col-md-6 offset-md-4">
+                         <button type="button" class="btn btn-primary" onclick="location.href='{{ route('register') }}'">
+                             新規の方はこちらから 
+                        </button>
+                        </div>
                     </div>
                 </div>
             </div>

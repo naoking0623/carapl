@@ -10,7 +10,7 @@
                 <div class="cozyspace-wrapper">
                     <div class="container">
                       <div class="cozyspace-img">
-                      <img src="{{secure_asset("/storage/image/". $car->image_path)}}" alt="carimage"　width="450" height="300"　>
+                      <img src="{{secure_asset("/storage/img/". $car->image_path)}}" alt="carimage"　width="450" height="300"　>
                       </div>
                       <div class="cozyspace-message">
                         <h3 >車種：{{$car->name}}</h3>

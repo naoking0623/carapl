@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 use App\Http\Controllers\CarController as PublicCarController;
 Route::controller(PublicCarController::class)->group(function () {
-     Route::get('index', 'index');
+     Route::get('/', 'index');
      Route::get('company', 'company');
 });    
 Route::controller(PublicCarController::class)->middleware('auth')->group(function () {   
