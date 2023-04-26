@@ -18,10 +18,14 @@ use App\Http\Controllers\CarController as PublicCarController;
 Route::controller(PublicCarController::class)->group(function () {
      Route::get('/', 'index');
      Route::get('company', 'company');
+     Route::get('index', 'index');
 });    
 Route::controller(PublicCarController::class)->middleware('auth')->group(function () {   
     Route::get('yoyaku/add', 'add');
     Route::post('yoyaku/add', 'yoyakucreate')->name('yayakucreate');
+    Route::get('yoyaku/check', 'check');
+    Route::post('yoyaku/check', 'check')->name('yayakucheck');
+    
 });    
 
 use App\Http\Controllers\Admin\CarController;
@@ -35,8 +39,10 @@ use App\Http\Controllers\Admin\StockController;
 Route::controller(StockController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {   
     // Route::get('stock/create', 'add')->name('car.add');
     // Route::post('stock/create', 'stock')->name('stock.create');
-    Route::get('stock/list', 'stocklist')->name('stocklist');
+    Route::get('stock/list', 'stocklist')->name('stock.list');
     Route::get('stock/delete', 'delete')->name('stock.delete');
+    Route::post('stock/list', 'stocklist')->name('stock.list');
+    // Route::post('stock/create', 'stock')->name('stock.create');
 });    
 
 
@@ -48,8 +54,8 @@ Route::controller(UserController::class)->prefix('admin')->group(function() {
     
 });
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::controller(CarController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+// Route::controller(CarController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     
-});
+// });

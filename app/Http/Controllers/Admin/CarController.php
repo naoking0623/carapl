@@ -13,28 +13,7 @@ class CarController extends Controller
         return view('admin.stock.create');
     }
     
-    //  public function stocklist()
-    // {
-    //     return view('admin.stock.list');
-    // }
-    
-    
-    // public function create(Request $request)
-    // {
-    //     // admin/news/createにリダイレクトする
-    //     return redirect('admin/car/create');
-    // }
-
-    // public function edit()
-    // {
-    //     return view('admin.uesr.edit');
-    // }
-
-    // public function update()
-    // {
-    //     return redirect('admin/user/edit');
-    // } 
-    
+   
     public function stock(Request $request)
     {
         // 以下を追記

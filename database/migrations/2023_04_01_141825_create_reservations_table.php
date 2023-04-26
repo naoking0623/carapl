@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('reservation_date'); 
             $table->string('reservation_time'); 
             $table->string('user_id');
-             $table->string('car_id'); 
+            $table->string('car_id'); 
             $table->timestamps();
         });
     }

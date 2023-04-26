@@ -15,6 +15,10 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+      public function add()
+    {
+        return view('admin.stock.create');
+ }
 
     /**
      * Show the application dashboard.
@@ -23,6 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin.stock.create');
     }
 }

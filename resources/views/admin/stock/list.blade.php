@@ -5,12 +5,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <h1 style="text-align:center">在庫車一覧</h1>
+                <h1 style="text-align:center">在庫登録車一覧</h1>
                 @foreach($cars as $car)
                 <div class="cozyspace-wrapper">
                     <div class="container">
                       <div class="cozyspace-img">
-                      <img src="{{secure_asset("/storage/image/". $car->image_path)}}" alt="carimage"　width="450" height="300"　>
+                      <img src="{{secure_asset("/storage/imaget/". $car->image_path)}}" alt="carimage"　width="450" height="300"　>
                       </div>
                       <div class="cozyspace-message">
                         <h3 >車種：{{$car->name}}</h3>
@@ -25,6 +25,7 @@
                 <br>
                 </div>
                 @endforeach
+                <f
             </div>
        </div>
    </div>

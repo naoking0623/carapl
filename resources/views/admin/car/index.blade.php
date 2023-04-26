@@ -9,7 +9,7 @@
                 @foreach($cars as $car)
                 <div class="cozyspace-wrapper">
                       <div class="cozyspace-img">
-                      <img src="{{secure_asset("/storage/img/". $car->image_path)}}" alt="carimage"　width="450" height="300"　>
+                      <img src="{{secure_asset("/storage/image/". $car->image_path)}}" alt="carimage"　width="450" height="300"　>
                       </div>
                       <div class="cozyspace-message">
                         <h3 >車種：{{$car->name}}</h3>
@@ -18,12 +18,11 @@
                             <li>車検:{{$car->inspection}}まで</li>
                         </ul>
                         <!--<button type="button" class="btn btn-primary">この車の見学予約はこちらから</button>-->
-                        <a href="/yoyaku/add" class="btn btn--orange"><i class="fas fa-phone-alt fa-position-center"></i>この車の見学予約はこちら</a>
+                        <!--<a href="/yoyaku/add?id={{$car->id}}" class="btn btn--orange"><i class="fas fa-phone-alt fa-position-center"></i>この車の見学予約はこちら</a>-->
                       </div>
                 </div>
                 <br>
                 @endforeach
-                
             </div>
        </div>
    </div>

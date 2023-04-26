@@ -9,25 +9,35 @@
             <h1 style="text-align:center">
                 予約登録画面
             </h1>
-            <div class="cozyspace-wrapper">
-                <div class="container">
-                    <div class="cozyspace-img">
-                            <!--<img src="sample.gif" alt="サンプル" width="300" height="200">  -->
-                        <img src="{{ secure_asset('img/sample1.jpeg' ) }}" alt="carimage"　width="450" height="280"　>
-                    </div>
-                    <div class="cozyspace-message">
-                        <h3 >車種：タント</h3>
+                <div class="cozyspace-wrapper">
+                    <div class="container">
+                      <div class="cozyspace-img">
+                      <img src="{{secure_asset("/storage/image/". $car->image_path)}}" alt="carimage"　width="450" height="300"　>
+                      </div>
+                      <div class="cozyspace-message">
+                        <h3 >車種：{{$car->name}}</h3>
                         <ul >
-                            <li>走行距離:10000km</li>
-                            <li>年式:2022年式</li>
-                            <li>車検：2,024年3月まで</li>
+                        　　<li>走行距離:{{$car->odometer}}km</li>
+                            <li>車検:{{$car->inspection}}まで</li>
                         </ul>
-                            <!--<button type="button" class="btn btn-primary">この車の見学予約はこちらから</button>-->
-                        <br>
-                        <label for="start">予約日：</label><input type="date" id="start" name="trip-start"value="2018-07-22"min="2023-04-01" max="2028-12-31"></a>
+                    </div>
+                </div>
+                <div>
+                <br>
+                </div>
+                <br>
+                 @if (count($errors) > 0)
+                        <ul>
+                            @foreach($errors->all() as $e)
+                                <li>{{ $e }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                <form >
+                    <label for="start">予約日：</label><input type="date" id="start" name="reservation_date"value=""min="2023-04-01" max="2028-12-31"></a>
                         <br>
                         <a>予約時間：</a>
-                        <input type="time" name="time" list="time-list">
+                        <input type="time" name="reservation_time" list="time-list">
                         <datalist id="time-list">
                             <option value="10:00">10時</option>
                             <option value="11:00">11時</option>
@@ -40,7 +50,9 @@
                             <option value="18:00">18時</option>
                         </datalist>
                         <br>
-                        <a href="" class="btn btn--orange"><i class="fas fa-phone-alt fa-position-center"></i>上記内容で予約する</a>
+                        <!--<input type="submit" class="btn btn-primary" value="上記で予約する">  -->
+                        <a href="/yoyaku/check?id={{$car->id}}" class="btn btn--orange"><i class="fas fa-phone-alt fa-position-center"></i>上記内容で予約する</a>
+                </form>
                     </div>
                 </div>
             </div>
