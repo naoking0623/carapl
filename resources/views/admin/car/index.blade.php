@@ -6,6 +6,7 @@
         <div class="row">
             <div class="col-md-12 mx-auto">
                 <h1 style="text-align:center">在庫車一覧</h1>
+                <from>
                 @foreach($cars as $car)
                 <div class="cozyspace-wrapper">
                       <div class="cozyspace-img">
@@ -18,10 +19,11 @@
                             <li>車検:{{$car->inspection}}まで</li>
                         </ul>
                         <!--<button type="button" class="btn btn-primary">この車の見学予約はこちらから</button>-->
-                        <!--<a href="/yoyaku/add?id={{$car->id}}" class="btn btn--orange"><i class="fas fa-phone-alt fa-position-center"></i>この車の見学予約はこちら</a>-->
+                        <a href="/yoyaku/add?id={{$car->id}}" class="btn btn--orange"><i class="fas fa-phone-alt fa-position-center"></i>この車の見学予約はこちら</a>
                       </div>
                 </div>
                 <br>
+                </from>
                 @endforeach
             </div>
        </div>

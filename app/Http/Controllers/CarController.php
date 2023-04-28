@@ -30,10 +30,10 @@ class CarController extends Controller
     }
     
      
-     public function check(Request $request)
+     public function create(Request $request)
      
     {
-        dd("checkがよばれた");
+        // dd("checkがよばれた");
          // Validationを行う
         $this->validate($request,Reservation::$rules);
         
@@ -42,25 +42,30 @@ class CarController extends Controller
         $reservation = new Reservation;
         $form = $request->all();
         
-        $reservation =  Reservation::find($request->id);
+        // $reservation =  Reservation::find($request->id);
         
          
         
         // フォームから送信されてきた_tokenを削除する
         unset($form['_token']);
         // フォームから送信されてきたimageを削除する
-        unset($form['image']);
+        // unset($form['image']);
 
        
         //   データベースに保存する
         $reservation->fill($form);
         $reservation->save();
          
-        return view('yoyaku.check',compact('car','reservation'));
+        // return view('yoyaku.check',compact('car','reservation'));
+        
+        return redirect('admin/yoyaku/cheak',compact('car','reservation'));
+        
     }
   
-    
-   
+     public function cheak(Request $request)
+    {
+         return redirect('index');
+    }    
     // public function yoyakucreate(Request $request)
     // {
     //     // 以下を追記

@@ -22,8 +22,7 @@ Route::controller(PublicCarController::class)->group(function () {
 });    
 Route::controller(PublicCarController::class)->middleware('auth')->group(function () {   
     Route::get('yoyaku/add', 'add');
-    Route::post('yoyaku/add', 'yoyakucreate')->name('yayakucreate');
-    Route::get('yoyaku/check', 'check');
+    Route::post('yoyaku/create', 'create')->name('yayaku.create');
     Route::post('yoyaku/check', 'check')->name('yayakucheck');
     
 });    
