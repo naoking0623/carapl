@@ -17,6 +17,8 @@
                     <ul >
                         <li>予約日:{{$reservation ->reservation_date}}日</li>
                         <li>予約時間:{{$reservation ->reservation_time}}時</li>
+                        <li>名前:{{$reservation ->user_id}}日</li>
+                        <li>車の名前:{{$reservation ->car_id}}時</li>
                     </ul>
                 </div>
             </div>

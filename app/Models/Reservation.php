@@ -13,7 +13,5 @@ class Reservation extends Model
     public static $rules = array(
         'reservation_date' => 'required',
         'reservation_time' => 'required',
-        'user_id' => 'required',
-        'car_id' => 'required',
         );
 }

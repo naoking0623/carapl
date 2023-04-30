@@ -34,6 +34,10 @@
                         </ul>
                     @endif
                 <form action="{{ route('yayaku.create') }}" method="post" enctype="multipart/form-data">
+                            <input type="hidden"  name="user_id" value="{{ Auth::user()->id }}">
+                        <div class="form-group row">
+                            <input type="hidden" name="car_id" value="{{$car->id  }}">
+                        </div>
                     <label for="start">予約日：</label><input type="date" id="start" name="reservation_date"value=""min="2023-04-01" max="2028-12-31"></a>
                         <br>
                         <a>予約時間：</a>
@@ -50,6 +54,7 @@
                             <option value="18:00">18時</option>
                         </datalist>
                         <br>
+                       
                         @csrf
                         <input type="submit" class="btn btn-primary" value="上記で予約する">  
                 </form>

@@ -36,12 +36,9 @@ class CarController extends Controller
         // dd("checkがよばれた");
          // Validationを行う
         $this->validate($request,Reservation::$rules);
-        
-        $car = Car::find($request->id);
-        
         $reservation = new Reservation;
         $form = $request->all();
-        
+        $car=Car::find($request->car_id);
         // $reservation =  Reservation::find($request->id);
         
          
@@ -55,16 +52,21 @@ class CarController extends Controller
         //   データベースに保存する
         $reservation->fill($form);
         $reservation->save();
-         
+        $car_id = $request->id;
+        $reservation_id=$reservation->id;
         // return view('yoyaku.check',compact('car','reservation'));
         
-        return redirect('admin/yoyaku/cheak',compact('car','reservation'));
-        
+        // return redirect('yoyaku/cheak',['car_id'=>$car_id, 'reservation_id'=> $reservation_id]);
+        return redirect()->route("yayaku.check")->with(['car_id'=>$car_id, 'reservation_id'=> $reservation_id]);
     }
   
-     public function cheak(Request $request)
+     public function check(Request $request)
     {
-         return redirect('index');
+    
+        $car=Car::find($request);
+        $reservation=Reservation::find($request->reservation_id);
+        return view('yoyaku.check', compact('car','reservation'));
+        
     }    
     // public function yoyakucreate(Request $request)
     // {
