@@ -21,7 +21,10 @@
                         <!--<li>type="hidden" {{$reservation ->user_id}}</li>-->
                         <!--<li>type="hidden" {{$reservation ->car_id}}</li>-->
                     </ul>
-                    
+                    <br>
+                    <br>
+                    <br>
+                      <a href="/" class="btn btn--orange"><i class="fas fa-phone-alt fa-position-center"></i>在庫一覧画面へもどる</a> 
                 </div>
             </div>
         </div>
