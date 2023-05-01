@@ -15,11 +15,13 @@
                         <li>車検:{{$car->inspection}}まで</li>
                     </ul>
                     <ul >
+                        <!--<li> type="hidden" {{$reservation ->reservation_id}}</li>-->
                         <li>予約日:{{$reservation ->reservation_date}}日</li>
                         <li>予約時間:{{$reservation ->reservation_time}}時</li>
-                        <li>名前:{{$reservation ->user_id}}日</li>
-                        <li>車の名前:{{$reservation ->car_id}}時</li>
+                        <!--<li>type="hidden" {{$reservation ->user_id}}</li>-->
+                        <!--<li>type="hidden" {{$reservation ->car_id}}</li>-->
                     </ul>
+                    
                 </div>
             </div>
         </div>
