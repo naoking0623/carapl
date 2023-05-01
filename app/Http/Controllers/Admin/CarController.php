@@ -40,18 +40,6 @@ class CarController extends Controller
         $car->fill($form);
         $car->save();
 
-        return redirect('admin/stock/create');
+        return redirect('admin/stock/list');
     }
-    // 追記0413
-     public function delete(Request $request)
-    {
-        // 該当するNews Modelを取得
-        $car = Car::find($request->id);
-
-    //     削除する
-    //     $car->delete();
-
-    // //     return redirect('admin/stock/create');
-    // }
-}
 }

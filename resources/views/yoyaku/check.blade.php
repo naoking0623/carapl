@@ -3,6 +3,10 @@
 
 @section('content')
     <h1 style="text-align:center">予約した画面</h1>
+        @foreach($reservation_list as $reservation)
+            @php
+                $car = $reservation->car;
+            @endphp
         <div class="cozyspace-wrapper">
             <div class="container">
                 <div class="cozyspace-img">
@@ -21,6 +25,8 @@
                         <!--<li>type="hidden" {{$reservation ->user_id}}</li>-->
                         <!--<li>type="hidden" {{$reservation ->car_id}}</li>-->
                     </ul>
+                    <a href="{{ route('admin.stock.delete', ['id' => $car->id]) }}">削除</a>
+        @endforeach
                     <br>
                     <br>
                     <br>

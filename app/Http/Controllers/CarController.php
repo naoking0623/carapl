@@ -57,7 +57,7 @@ class CarController extends Controller
         // return view('yoyaku.check',compact('car','reservation'));
         
         // return redirect('yoyaku/cheak',['car_id'=>$car_id, 'reservation_id'=> $reservation_id]);
-        return redirect()->route("yayaku.check", ['car_id'=>$car_id, 'reservation_id'=> $reservation_id]);
+        return redirect()->route("yayaku.check", ['car_id'=>$car_id, 'reservation_id'=> $reservation_id, 'user_id' => $request->user_id]);
     }
   
      public function check(Request $request)
@@ -65,35 +65,23 @@ class CarController extends Controller
     
         $car=Car::find($request->car_id);
         $reservation=Reservation::find($request->reservation_id);
-        
-        return view('yoyaku.check', compact('car','reservation'));
+        $reservation_list = Reservation::where('user_id', $request->user_id)->get();
+        //$car->delete();
+        //$reservation->delete();
+        return view('yoyaku.check', compact('car','reservation','reservation_list'));
         
     }    
-    // public function yoyakucreate(Request $request)
-    // {
-    //     // 以下を追記
-    //     // Validationを行う
-    //     $this->validate($request, Car::$rules);
 
-    //     $car = new Car;
-    //     $form = $request->all();
-    //     // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
-    //     if (isset($form['image'])) {
-    //         $path = $request->file('image')->store('public/image');
-    //         $car->image_path = basename($path);
-    //     } else {
-    //         $car->image_path = null;
-    //     }
+    // 追記0413
+     public function delete(Request $request)
+    {
+        // 該当するNews Modelを取得
+        $car = Car::find($request->id);
 
-    //     // フォームから送信されてきた_tokenを削除する
-    //     unset($form['_token']);
-    //     // フォームから送信されてきたimageを削除する
-    //     unset($form['image']);
-
-    //     // データベースに保存する
-    //     $car->fill($form);
-    //     $car->save();
-
-    //     return redirect('stock/create');
+        // 削除する
+        $car->delete();
+        //$->deletee();
+    // //     return redirect('admin/stock/create');
     // }
+    }
 }

@@ -9,7 +9,7 @@
             <h1 style="text-align:center">
                 在庫車の登録
             </h1>
-           <form action="{{ route('admin.stock.list') }}" method="post" enctype="multipart/form-data">
+           <form action="{{ route('admin.stock.create') }}" method="post" enctype="multipart/form-data">
 
 
                     @if (count($errors) > 0)

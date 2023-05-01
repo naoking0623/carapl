@@ -14,4 +14,9 @@ class Reservation extends Model
         'reservation_date' => 'required',
         'reservation_time' => 'required',
         );
+
+    public function car() {
+        return $this->belongsTo(Car::class);
+    }
+    
 }
